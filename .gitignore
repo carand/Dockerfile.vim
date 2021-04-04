@@ -1,2 +1,7 @@
 *.swp
 *.swo
+tags
+cscope.*
+cscope.*.*
+.nvimlog
+ncscope.out.temp
