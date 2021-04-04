@@ -1,22 +1,31 @@
-install:
+PLUGINS_DIR = "~/.vim/plugged"
+APP_DIR = Dockerfile.vim
+INSTALLDIR = $(PLUGINS_DIR)/$(APP_DIR)
+
+plug:
+	mkdir -p $(PLUGINS_DIR) || exit
+	mkdir -p $(INSTALLDIR) || exit
 	@echo "Installation:"
-	@mkdir -p ~/.vim/syntax
-	@mkdir -p ~/.vim/indent
-	@mkdir -p ~/.vim/ftdetect
-	@mkdir -p ~/.vim/ftplugin
-	@mkdir -p ~/.vim/snippets
+	@mkdir -p $(INSTALLDIR)/syntax
+	@mkdir -p $(INSTALLDIR)/indent
+	@mkdir -p $(INSTALLDIR)/ftdetect
+	@mkdir -p $(INSTALLDIR)/ftplugin
+	@mkdir -p $(INSTALLDIR)/snippets
 	@echo " * Dirs     ...    success."
-	@cp ./syntax/Dockerfile.vim 		~/.vim/syntax/
-	@cp ./syntax/docker-compose.vim 		~/.vim/syntax/
+	@cp ./syntax/dockerfile.vim $(INSTALLDIR)/syntax/
+	@cp ./syntax/docker-compose.vim $(INSTALLDIR)/syntax/
 	@echo " * Ident    ...    success."
-	@cp ./indent/Dockerfile.vim 		~/.vim/indent/
+	@cp ./indent/dockerfile.vim $(INSTALLDIR)/indent/
+	@cp ./indent/dockerfile.vim $(INSTALLDIR)/indent/
 	@echo " * Syntax   ...    success."
-	@cp ./ftdetect/Dockerfile.vim 		~/.vim/ftdetect/
-	@cp ./ftdetect/docker-compose.vim 		~/.vim/ftdetect/
+	@cp ./ftdetect/docker-compose.vim $(INSTALLDIR)/ftdetect/
 	@echo " * Filetype ...    success."
-	@cp ./ftplugin/Dockerfile.vim 		~/.vim/ftplugin/
-	@cp ./ftplugin/docker-compose.vim 		~/.vim/ftplugin/
+	@cp ./ftplugin/dockerfile.vim $(INSTALLDIR)/ftplugin/
+	@cp ./ftplugin/docker-compose.vim $(INSTALLDIR)/ftplugin/
 	@echo " * Plugin   ...    success."
-	@cp ./snippets/Dockerfile.snippets 	~/.vim/snippets/
-	@cp ./snippets/docker-compose.snippets 	~/.vim/snippets/
+	@cp ./snippets/dockerfile.snippets $(INSTALLDIR)/snippets/
+	@cp ./snippets/docker-compose.snippets $(INSTALLDIR)/snippets/
 	@echo " * Snippets ...    success."
+
+unplug:
+	$(RM) -r $(INSTALLDIR)
