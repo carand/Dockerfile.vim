@@ -1,4 +1,4 @@
-PLUGINS_DIR = "~/.vim/plugged"
+PLUGINS_DIR = ~/.vim/plugged
 APP_DIR = Dockerfile.vim
 INSTALLDIR = $(PLUGINS_DIR)/$(APP_DIR)
 
